@@ -44,13 +44,12 @@ class KeyFeatures(models.Model):
     class Meta:
         verbose_name_plural = 'Key Features'
 
-    
     name = models.CharField(default='ProductCategory Features', max_length=254)
 
-    feature_for = models.CharField(max_length=254, null=True, blank=True, default='Motherboard, Graphic Card etc. ')
+    feature_for = models.CharField(max_length=254, null=True, blank=False, default='Motherboard, Graphic Card etc. ')
 
-    feature_1_name = models.ForeignKey('Feature', related_name='feature_1_names', null=True, blank=True, on_delete=models.SET_NULL)
-    feature_1 = models.CharField(max_length=254, blank=True)
+    feature_1_name = models.ForeignKey('Feature', related_name='feature_1_names', null=True, blank=False, on_delete=models.SET_NULL)
+    feature_1 = models.CharField(max_length=254, blank=False)
 
     feature_2_name =  models.ForeignKey('Feature', related_name='feature_2_names', null=True, blank=True, on_delete=models.SET_NULL)
     feature_2 = models.CharField(max_length=254, blank=True)
@@ -64,7 +63,7 @@ class KeyFeatures(models.Model):
     feature_5_name = models.ForeignKey('Feature', default='test1', related_name='feature_5_names', null=True, blank=True, on_delete=models.SET_NULL)
     feature_5 = models.CharField(max_length=254, blank=True)
 
-    
+
 
     def __str__(self):
         return self.feature_for

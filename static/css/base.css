@@ -112,6 +112,12 @@ input[name='q']::placeholder {
     height: 130px;
 }
 
+/* Breadcrumb color overwrite */
+.breadcrumb {
+
+  background-color: #fff;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {

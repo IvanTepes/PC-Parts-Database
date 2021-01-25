@@ -13,11 +13,12 @@
     <div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6 mx-auto">
+            <div class="mx-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Products</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{ product.category.name }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ product.brand.name }}</li>
                     </ol>
                 </nav>
@@ -73,7 +74,7 @@
                     {% endif %}
                     {% endif %}
                     {% if product.category %}
-                    <p class="small mt-1 mb-3">
+                    <p class="small mt-2 mb-2">
                         <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
                             <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                         </a>
@@ -92,13 +93,8 @@
                     {% endif %}
                     <div class="container">
                         <div class="row">
-                            <div class="col-6 text-center mt-2">
-                                <a class="text-primary" href="#product-description">Detail</a>
-                                </small>
-                            </div>
-                            <div class="col-6 text-center mt-2">
-                                <a class="text-primary" href="">Specification</a>
-                                </small>
+                            <div class="col-12 text-center mt-2">
+                                <a class="text-info" href="#product-description">Additional Information</a>  
                             </div>
                         </div>
                     </div>
@@ -119,8 +115,8 @@
                             </div>
                             {% endif %}
                             <div class="col-12">
-                                <p class="mt-3"><strong>Quantity:</strong></p>
-                                <div class="form-group w-50">
+                                <p class="mt-3 ml-3"><strong>Quantity:</strong></p>
+                                <div class="form-group col-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="decrement-qty btn btn-black rounded-0"
@@ -130,9 +126,9 @@
                                                 </span>
                                             </button>
                                         </div>
-                                        <input class="form-control qty_input" type="number" name="quantity" value="1"
+                                        <input class="form-control qty_input text-center font-weight-bold" type="number" name="quantity" value="1"
                                             min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                                        <div class="input-group-append">
+                                        <div class="input-group-append mr-5">
                                             <button class="increment-qty btn btn-black rounded-0"
                                                 data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
                                                 <span class="icon">
@@ -140,18 +136,21 @@
                                                 </span>
                                             </button>
                                         </div>
-                                    </div>
+                                        <div>
+                                          <input type="submit" class="btn btn-black rounded-0 text-uppercase ml-5" value="Add to Bag">
+                                        </div>
+                                      </div>
                                 </div>
                             </div>
     
-                            <div class="col{% if s %}-12 mt-2{% endif %}">
-                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                            <div class="col-12{% if s %}-12 mt-2{% endif %}">
+                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 w-100 mt-3">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
@@ -162,11 +161,15 @@
         </div>
         <div class="row">
             <div id="product-description" class="col-sm-12 col-md-6 text-center">
-                <p>Product Description :</p>
-                {{ product.description }}
+                <hr>
+                <p class="lead font-weight-bold">Product Description</p>
+                <hr>
+                {{ product.details | linebreaksbr  }}
             </div>
             <div class="col-sm-12 col-md-6 text-center">
-                <p> Specification :</p>
+              <hr>
+              <p class="lead font-weight-bold" >Specification</p>
+              <hr>
             </div>
         </div>
     </div>
