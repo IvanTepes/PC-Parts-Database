@@ -51,29 +51,29 @@
                         {% include 'products/includes/manufacturers_logos.html' %}
                     </div>
                     <h2 class="mb-3 text-left text-danger font-weight-bold">${{ product.price }}</h2>
-                    <p class="lead mt-3 mb-1">Key Features :</p>
+                    <p class="lead mt-3 mb-3 font-weight-bold">Key Features :</p>
                     {% if product.key_feature %}
-                    <li class="mt-0">{{ product.key_feature.feature_1_name.friendly_name }} -
+                    <li class="mt-0 font-weight-bold">{{ product.key_feature.feature_1_name }} -
                         {{ product.key_feature.feature_1 }}</li>
                     {% if product.key_feature.feature_2 %}
-                    <li class="mt-1">{{ product.key_feature.feature_2_name.friendly_name  }} -
+                    <li class="mt-1 font-weight-bold">{{ product.key_feature.feature_2_name  }} -
                         {{ product.key_feature.feature_2 }}</li>
                     {% endif %}
                     {% if product.key_feature.feature_3 %}
-                    <li class="mt-1">{{ product.key_feature.feature_3_name.friendly_name }} -
+                    <li class="mt-1 font-weight-bold">{{ product.key_feature.feature_3_name }} -
                         {{ product.key_feature.feature_3 }}</li>
                     {% endif %}
                     {% if product.key_feature.feature_4 %}
-                    <li class="mt-1">{{ product.key_feature.feature_4_name.friendly_name }} -
+                    <li class="mt-1 font-weight-bold">{{ product.key_feature.feature_4_name }} -
                         {{ product.key_feature.feature_4 }}</li>
                     {% endif %}
                     {% if product.key_feature.feature_5 %}
-                    <li class="mt-1">{{ product.key_feature.feature_5_name.friendly_name }} -
+                    <li class="mt-1 font-weight-bold">{{ product.key_feature.feature_5_name }} -
                         {{ product.key_feature.feature_5 }}</li>
                     {% endif %}
                     {% endif %}
                     {% if product.category %}
-                    <p class="small mt-1 mb-0">
+                    <p class="small mt-1 mb-3">
                         <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
                             <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                         </a>

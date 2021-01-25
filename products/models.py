@@ -37,7 +37,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True,
                                  blank=True)
-    has_side_banner = models.BooleanField(default=False, null=True, blank=True)
     promo_side_banner_left = models.ImageField(null=True, blank=True)
     promo_side_banner_right = models.ImageField(null=True, blank=True)
     promo_side_banner_bottom = models.ImageField(null=True, blank=True)

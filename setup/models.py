@@ -9,10 +9,7 @@ class Brand(models.Model):
 
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=False)
-    has_logo = models.BooleanField(
-            default=True, null=True, blank=False)
-    brand_logo = models.ImageField(null=True, blank=True)
-    has_side_banner = models.BooleanField(default=False, null=True, blank=True)
+    brand_logo = models.ImageField(null=True, blank=False)
     side_banner = models.ImageField(null=True, blank=True)
     website = models.URLField(max_length=1024, null=True, blank=False)
 
